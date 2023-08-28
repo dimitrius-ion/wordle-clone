@@ -3,7 +3,6 @@ import { range } from "../../utils";
 import { checkGuess } from "../../game-helpers";
 
 function Guess({ wordList }) {
-  console.log(wordList);
   return (
     <div className="guess-results">
       {range(6).map((num) => (

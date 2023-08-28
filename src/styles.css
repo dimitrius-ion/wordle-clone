@@ -195,7 +195,28 @@ h1 {
   padding: 0;
   border: 0;
 }
-
+.key {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background: lightgray;
+  margin: 1.5px;
+}
+.key.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+.key.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+.key.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
 /*
   Modal styles
 
