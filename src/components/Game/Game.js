@@ -34,10 +34,7 @@ function Game() {
 
       <Input
         setWord={setWord}
-        disabled={
-          wordList.filter((w) => !w.win && w.word).length ===
-          NUM_OF_GUESSES_ALLOWED
-        }
+        disabled={wordList.length === NUM_OF_GUESSES_ALLOWED}
       />
       {win && (
         <div className="happy banner">
