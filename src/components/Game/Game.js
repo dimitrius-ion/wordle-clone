@@ -3,23 +3,30 @@ import React from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
 import Input from "../Input";
+import Guess from "../Guess";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
+import { range } from "../../utils";
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
+let guesses = range(0, NUM_OF_GUESSES_ALLOWED);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
 function Game() {
   const [wordList, setWordList] = React.useState([]);
+
   return (
     <>
       <div className="guess-results">
-        {wordList.map(({ word, key }) => (
-          <p key={key} className="guess">
-            {word}
-          </p>
+        {guesses.map((guess) => (
+          <div key={guess} className="guess-results">
+            <Guess guess={wordList[guess]} />
+          </div>
         ))}
       </div>
-      <Input setWordList={setWordList} />
+      {wordList.length < NUM_OF_GUESSES_ALLOWED && (
+        <Input setWordList={setWordList} />
+      )}
     </>
   );
 }
