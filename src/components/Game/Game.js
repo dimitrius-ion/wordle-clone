@@ -9,9 +9,17 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [wordList, setWordList] = React.useState([]);
   return (
     <>
-      <Input />
+      <div className="guess-results">
+        {wordList.map(({ word, key }) => (
+          <p key={key} className="guess">
+            {word}
+          </p>
+        ))}
+      </div>
+      <Input setWordList={setWordList} />
     </>
   );
 }

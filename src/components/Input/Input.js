@@ -1,20 +1,22 @@
 import React from "react";
 
-function Input() {
+function Input({ setWordList }) {
   const [inputValue, setInputValue] = React.useState("");
+
   return (
     <form
       className="guess-input-wrapper"
       onSubmit={(e) => {
         e.preventDefault();
-        const input = e.target[0].value.toUpperCase();
-
-        if (input.length != 5) {
+        if (inputValue.length != 5) {
           alert("input cant be more then 5 characters");
           return;
         }
-        console.log(input);
-        e.target[0].value = "";
+        setWordList((prev) => [
+          ...prev,
+          { word: inputValue.toUpperCase(), key: crypto.randomUUID() },
+        ]);
+        setInputValue("");
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
