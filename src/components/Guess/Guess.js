@@ -1,20 +1,28 @@
 import React from "react";
 import { range } from "../../utils";
 import { checkGuess } from "../../game-helpers";
-let letters = range(0, 5);
 
-function Guess({ guess }) {
+function Guess({ wordList }) {
+  console.log(wordList);
   return (
-    <p className="guess">
-      {letters.map((letter) => (
-        <span
-          key={letter}
-          className={"cell " + (guess && guess[letter].status)}
-        >
-          {guess && guess[letter].letter}
-        </span>
+    <div className="guess-results">
+      {range(6).map((num) => (
+        <div key={num} className="guess-results">
+          <p className="guess">
+            {range(5).map((l) => (
+              <span
+                key={l}
+                className={
+                  "cell " + (wordList[num] && wordList[num].value[l].status)
+                }
+              >
+                {wordList[num] && wordList[num].value[l].letter}
+              </span>
+            ))}
+          </p>
+        </div>
       ))}
-    </p>
+    </div>
   );
 }
 
